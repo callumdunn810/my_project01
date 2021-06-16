@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% for name in names %} 
+    {% for letter in names %} 
+        {% if letter == "b" %}
+                <p> {{ name }} </p>
+                <br>
+        {% endif %}
+    {% endfor %}    
+{% endfor %}
+{% endblock body %}
