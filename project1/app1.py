@@ -4,12 +4,12 @@ from wtforms import StringField, SubmitField
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = getnv('SKEY')
+app.config['SECRET_KEY'] = 'SKEY'
 
 class BasicForm(FlaskForm):
     first_name = StringField('First Name')
     last_name = StringField('Last Name')
-    submit = SubmitField('Continue')
+    submit = SubmitField('Submit')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -23,9 +23,9 @@ def register():
         last_name = form.last_name.data
 
         if len(first_name) == 0 or len(last_name) == 0:
-            error = "Please supply both first and last name"
+            error = "Please provide first and last name"
         else:
-            return 'thank_you'
+            return 'Form submitted, Thank you!'
 
     return render_template('home.html', form=form, message=error)
 
